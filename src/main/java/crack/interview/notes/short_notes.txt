@@ -1,0 +1,166 @@
+Watch for words rotation, set
+always try the opposite of your logic like for permutation of a palindrome
+look for duplicates in your answer use a hashset instead of an arraylist just in case
+Set<Integer> hashset = new HashSet<>();
+
+STRING
+integer to string ??? try again too long
+Have an integer to String hashmap
+Convert integer to array. (convert Integer.toString(324)) 4 "324".charAt(i)
+4 append to String
+
+permutation, one string permutation of 2nd strings (test abc bbb)
+both have to be same length; wont work without this
+4 Put Character.getNumericValue into array[int] as a counter of chars.
+4 Reduce counters with the second string if array[int] != 0
+4 If counter is all zero it's a permutation
+notes: Use foreach for array. Simplify if, remember return counter == 0
+
+unique chars without using data structures
+fill boolean[] array. if array[i]==true already, return false
+
+1_3 Urlify replace ' ' with %20
+string.toCharArray()
+4 if ' ' append("%20") else append array[i]
+
+1_4 Permutation of palindrome - madma true (madam)
+both have to be same length
+4 Put Character.getNumericValue into array[int] as a counter of chars.
+test for opposite of even or odd, test array[i] = 1 twice
+
+1_6 compress string - aabcccccaaa a2b1c5a3
+4 (mark current char) if (same char) count char else append counter, reset counter and current char
+
+fb matching pairs, matching all chars in String, swap two and match. Get max matching
+4 count matching chars in two Strings, create StringBuffer s and t from others.
+4 mark those present in s using array[boolean]
+4 if char in t marked, counter++. counter = initial counter + 2 quit
+
+fb rotational cipher - rotating each character by the rotational factor
+4 if numeric value is -1 append
+if Character.isDigit(ch) append (Character.getNumericValue(input.charAt(i)) + rotationFactor) % 10
+else {rotation = (char - a) + rotational factor % 26
+rotation + a (handling uppercase)
+}
+
+ARRAYS
+one edit or zero edits ???
+
+fb reverse to check equal ??? What is this question actually
+Arrays.sort() Arrays.sort()
+Arrays.equals(a, b)
+
+spread sheet encoding
+int currentChar = Character.getNumericValue(column.charAt(i)) - Character.getNumericValue('a') + 1;
+currentIndex += Math.pow(26, size - i - 1) * currentChar; why did I do i - 1 ???
+ 
+STACKS
+3_1 three in one - use single array to implement 3 stacks
+array[top1 * 3] array[top2 * 3] array[top3 * 3]
+
+3_3 stack of plates
+Use Map<Integer, Stack<T>> map = new HashMap<>();
+(push) When size of currentStack == high, currentStack++??, create new stack.
+Else add to same stack.
+handle when map is empty
+(Pop) when size of currentStack == 0, currentStack—; pop
+Remember exceptions will propagate from Stack for push and pop
+
+3_4 queue using two stacks
+5 4 3 2 1 push into stack1
+1 2 3 4 5 pop from stack1 push into stack2
+note popping looping through stacks changes stack size during run time, Iterator<Node> it = stack.iterator();
+while (it.next())
+stack1.peek will through an exception use stack1.size == 0 for isEmptyStack1
+stack2.pop already throws an exception so no need to check for empty
+
+TREE
+Inorder
+transverse()
+vist()
+transverse()
+Preorder
+visit();
+transverse();
+transverse();
+Postorder
+transverse();
+transverse();
+visit();
+
+4_2 minimal tree - create tree with minimal height
+split array to left and right using
+Arrays.copyOfArray(array, 1, middle)
+Arrays.copyOfRange(array, middle + 2, array.length)
+  private static void insert(Node n, int[] array) {// 1
+        int middle = (array.length) / 2;//0
+        n.left = new Node(array[0]);//1
+        n.right = new Node(array[middle]);//1
+        if (array.length > 2) {
+            insert(n.left, Arrays.copyOfRange(array, 1, middle));
+            insert(n.right, Arrays.copyOfRange(array, middle + 1, array.length));
+        }
+    }
+
+4_3 list of depths - linkedlist of nodes at each depth
+pre order search visit(n, l); l++; transverse(n.left, l); transverse(n.right, l);
+when visiting add node n into depth l in Map<Integer, LinkedList<Node>> dl = new HashMap<>();
+
+BIT MANIPULATION
+ 0110 + 0110 = 2 * 0110 = shift left 1 = 1100;
+ 0011 * 0100 = shift left 2 = 1100
+ 1101 ^ -1101 = Xor with neg = 1111s
+ ~0 = 1111s, 1011 AND 1100 = 0 clears last to bits = 1000
+ x & 0s = x      x & 0s = 0       x || 0s = x
+ x & 1s = ~x     x & 1s = x       x || 1s = 1s
+ x & x  = 0      x & x  = x       x || x  = x
+
+7 111		-1 1 111
+1 001		-7 1 001
+
+Logical shift, shift bits. << l >> r
+Arithmetic shift, fill sign bits <<< l >>> r
+|| Logical OR, | bitwise OR
+
+detect 1
+num & (1 << i) != 0
+
+changing only 0s to 1s
+num | (1 << i)
+
+clear a bit, to 0
+int mask = ~(i << i)
+num & mask
+
+clear bits till i = 2
+int mask = (1 << i) - 1; [100] , [00011]
+num & mask leaves only last bits
+
+clears i to 0 ???
+int mask = ~(-1 >>> (31 - i));
+return num & mask;
+
+update bit check it
+
+int UpdateBit(int num, int i, boolean bitsIs1) { [5,2,1]
+    int value = bitsIs1 ? 1 : 0;
+    int mask = ~(1 << i);   [011] to clean ith bit
+    return (num & mask) | (value << i); [101 & 011] | [100] clearing ith bit
+}
+    [001] | [100]
+    [101] replacing ith bit
+
+GRAPHS
+QUEUES
+
+SEARCH
+SORTING
+GREEDY ALGORITHMS
+RECURSION
+HASHTABLE
+LINKEDLISTS
+
+
+triple steps ???
+
+look and say ??? try again too long
