@@ -1,4 +1,4 @@
-package hackerrank;
+package hackerrank.dictionariesandhashmaps;
 
 
 import com.google.common.collect.Lists;
