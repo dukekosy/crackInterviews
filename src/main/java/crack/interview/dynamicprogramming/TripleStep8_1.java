@@ -1,4 +1,4 @@
-package crack.interview;
+package crack.interview.dynamicprogramming;
 
 import java.util.HashMap;
 import java.util.Map;

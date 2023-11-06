@@ -1,6 +1,4 @@
-package crack.interview.notes;
-
-import javafx.collections.ObservableIntegerArray;
+package crack.interview.sortingandsearching;
 
 // Java implementation of recursive Binary Search
 class BinarySearch {

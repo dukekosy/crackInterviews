@@ -1,4 +1,4 @@
-package crack.interview.notes.patterns.strategy;
+package crack.interview.designpatterns.strategy;
 
 public interface Strategy {
 

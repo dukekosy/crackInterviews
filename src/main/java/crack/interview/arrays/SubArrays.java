@@ -1,4 +1,4 @@
-package crack.interview.notes;
+package crack.interview.arrays;
 
 public class SubArrays {
 

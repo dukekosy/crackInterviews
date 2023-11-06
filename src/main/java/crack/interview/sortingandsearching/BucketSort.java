@@ -1,4 +1,4 @@
-package crack.interview.notes;
+package crack.interview.sortingandsearching;
 // Java program to sort an array
 // using bucket sort
 

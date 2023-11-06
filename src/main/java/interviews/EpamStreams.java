@@ -1,4 +1,4 @@
-package crack.interview.notes;
+package interviews;
 
 import java.util.List;
 import java.util.stream.Collectors;

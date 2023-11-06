@@ -1,4 +1,4 @@
-package crack.interview.treesandgraphs;
+package crack.interview.trees;
 
 import java.security.InvalidParameterException;
 import java.util.Arrays;

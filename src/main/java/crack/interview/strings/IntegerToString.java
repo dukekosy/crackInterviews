@@ -1,4 +1,4 @@
-package crack.interview;
+package crack.interview.strings;
 
 import java.util.*;
 

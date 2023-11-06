@@ -1,4 +1,4 @@
-package crack.interview.notes;
+package crack.interview.sortingandsearching;
 
 // Java program for implementation of QuickSort
 class QuickSort {

@@ -1,4 +1,4 @@
-package crack.interview.treesandgraphs;
+package crack.interview.trees;
 /*
 
 Nodes in a Subtree

@@ -1,4 +1,4 @@
-package crack.interview.notes;
+package crack.interview.sortingandsearching;
 
 import java.util.Arrays;
 

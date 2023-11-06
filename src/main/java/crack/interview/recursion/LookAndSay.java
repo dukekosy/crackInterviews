@@ -1,4 +1,4 @@
-package crack.interview;
+package crack.interview.recursion;
 
 public class LookAndSay {
 

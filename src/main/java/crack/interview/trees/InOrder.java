@@ -1,4 +1,4 @@
-package crack.interview.notes;
+package crack.interview.trees;
 
 /* transversing a binary tree in-order depth first */
 // https://www.youtube.com/watch?v=6oL-0TdVy28&list=PL5tcWHG-UPH2fmYC6kgey1RIxP2iK9EEL&index=2&t=1s

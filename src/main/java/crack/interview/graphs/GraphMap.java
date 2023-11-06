@@ -1,4 +1,4 @@
-package crack.interview.notes;
+package crack.interview.graphs;
 
 import java.util.HashMap;
 import java.util.LinkedList;

@@ -1,4 +1,4 @@
-package crack.interview.notes;
+package crack.interview.sortingandsearching;
 
 public class FibonacciSearch {
     // Utility function to find minimum
