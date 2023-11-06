@@ -5,7 +5,9 @@ import java.util.Map;
 import java.util.Stack;
 
 public class StackOfPlates<T> {
-
+/*Stack of Plates: Imagine a (literal) stack of plates. If the stack gets too high,
+it might topple. Therefore, in real life, we would likely start a new stack when the
+previous stack exceeds some threshold. Implement a data structure SetOfStacks that mimics this*/
     private Integer currentStack = 0;
     private final Map<Integer, Stack<T>> map = new HashMap<>();
 

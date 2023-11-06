@@ -1,5 +1,7 @@
 package crack.interview.notes;
 
+import javafx.collections.ObservableIntegerArray;
+
 // Java implementation of recursive Binary Search
 class BinarySearch {
     // Returns index of x if it is present in arr[l..
@@ -29,6 +31,7 @@ class BinarySearch {
         // in array
         return -1;
     }
+
 
     // Driver method to test above
     public static void main(String args[]) {

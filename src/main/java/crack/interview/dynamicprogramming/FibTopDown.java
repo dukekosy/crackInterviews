@@ -4,7 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FibTopDown {
-
+//total of first n fibonacci elements
+    // 1 2 3 5 8 first 5 numbers
   static Map<Integer, Integer> memoization = new HashMap<>();
 
   /*
@@ -34,7 +35,7 @@ public class FibTopDown {
     System.out.println(calculateFibTopDownMemoization(4));
     System.out.println(calculateFibTopDownMemoization(5));
     System.out.println(calculateFibTopDownMemoization(6));
-    System.out.println(calculateFibTopDownMemoization(7));
+    System.out.println(calculateFibTopDownMemoization(21));
 
 
     System.out.println("********* calculateFibBottomUp ***********");
@@ -135,6 +136,7 @@ public class FibTopDown {
 
   /**
    * This method has time complexity O(n) same as bottom up approach
+   * Adding memory means it's done using dynamic programming. Faster.
    *
    * @param n
    * @return
@@ -146,7 +148,8 @@ public class FibTopDown {
       memoization.put(2, 1);
       return 1;
     } else {
-      memoization.put(n, calculateFibTopDownMemoization(n - 1) + calculateFibTopDownMemoization(n - 2));
+      int temp = calculateFibTopDownMemoization(n - 1) + calculateFibTopDownMemoization(n - 2);
+      memoization.put(n, temp);
       return memoization.get(n - 1) + memoization.get(n - 2);
     }
   }

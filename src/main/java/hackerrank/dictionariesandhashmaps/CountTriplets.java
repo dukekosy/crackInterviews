@@ -1,8 +1,10 @@
 package hackerrank.dictionariesandhashmaps;
 import java.util.*;
-import java.io.*;
+
 
 public class CountTriplets {
+//take a look at the text file. this is pretty hard and I'd say don't spend too much time on it.
+    //https://www.youtube.com/watch?v=eAeuaRJ5RcM
 
     static long countTriplets(List<Long> arr, long r) {
 
@@ -14,17 +16,22 @@ public class CountTriplets {
         for (int i = 0; i < arr.size(); i++) {
             long element = arr.get(i).longValue();
 
-            // If the current element is a valid third element, increment the count.
+            // If the current element is a valid third element, get current element count
+            // increment count with that number will be +2 in case of 2,2 (repeated number)
+            // will be +1 in case of non repeated number.
             if (thirdMap.containsKey(element)) {
                 count += thirdMap.get(element);
             }
 
             // If the current element is a valid second element, update thirdMap.
+            // with the expected third element, the current count of the current elements
+            // which is element count of thirdMap (if next number is repeated number or  0) and
+            // element count of secondMap which is the current element.
             if (secondMap.containsKey(element)) {
                 thirdMap.put(element * r, thirdMap.getOrDefault(element * r, 0L) + secondMap.get(element));
             }
 
-            // Update secondMap with the current element.
+            // Update secondMap with the next element, the next element count + 1
             secondMap.put(element * r, secondMap.getOrDefault(element * r, 0L) + 1);
         }
 

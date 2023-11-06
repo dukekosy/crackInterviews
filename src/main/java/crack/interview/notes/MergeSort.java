@@ -6,18 +6,26 @@ class MergeSort {
 
     private void merge(int[] arr, int l, int m, int r) {
         // Find sizes of two subarrays to be merged (getting wrong)
-        int n1 = m - l + 1;
-        int n2 = r - m;
+        int sizeL = m - l + 1;
+        int sizeR = r - m;
         // Getting wrong
-        int[] L = Arrays.copyOfRange(arr, l, l + n1);
-        int[] R = Arrays.copyOfRange(arr, m + 1, m+1+n2);
+        int[] L = Arrays.copyOfRange(arr, l, l + sizeL);
+        int[] R = Arrays.copyOfRange(arr, m + 1, m+1+sizeR);
+/*
+or
+        int sizeL = m - l;
+        int sizeR = r - m;
+        // Getting wrong
+        int[] L = Arrays.copyOfRange(arr, l+1, l+1 + sizeL);
+        int[] R = Arrays.copyOfRange(arr, m+1, m+1 + sizeR);
+*/
 
         int i = 0, j = 0;
 
         // Initial index of merged subarry array
         //xxx note l not 1
         int k = l;
-        while (i < n1 && j < n2) {
+        while (i < sizeL && j < sizeR) {
             //xxx remember this less than or equal to
             if (L[i] <= R[j]) {
                 arr[k] = L[i];
@@ -29,13 +37,13 @@ class MergeSort {
             k++;
         }
 
-        while (i < n1) {
+        while (i < sizeL) {
             arr[k] = L[i];
             i++;
             k++;
         }
 
-        while (j < n2) {
+        while (j < sizeR) {
             arr[k] = R[j];
             j++; //xxx not i
             k++;

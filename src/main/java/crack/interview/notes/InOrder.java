@@ -49,11 +49,11 @@ public class InOrder {
         if (ret == 7)
             return ret;
         if (node != null) {
-            ret = traverseInOrder(ret, node.left);
+            traverseInOrder(ret, node.left);
             ret = visit(node);
             if (ret == 7)
                 return ret;
-            ret = traverseInOrder(ret, node.right);
+            traverseInOrder(ret, node.right);
         }
         return ret;
     }

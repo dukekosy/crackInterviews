@@ -1,99 +1,44 @@
 package crack.interview.trees;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
-// Add any extra import statements you may need here
-/*
-Number of Visible Nodes
-There is a binary tree with N nodes.
-You are viewing the tree from its left side and can see only the leftmost nodes at each level.
-Return the number of visible nodes.
-Note: You can see only the leftmost nodes, but that doesn't mean they have to be left nodes.
-The leftmost node at a level could be a right node.
-Signature
-int visibleNodes(Node root) {
-Input
-The root node of a tree, where the number of nodes is between 1 and 1000,
-and the value of each node is between 0 and 1,000,000,000
-Output
-An int representing the number of visible nodes.
-Example
-8 <------ root
-/
-3 10
-/ \
-1 6 14
-/ \ /
-4 7 13
-output = 4
- */
-/*
-preorder
-v
-t
-t
 
-8 3 1 (if left exist avoid right)
+public class SimplerSolution {
 
-search keep note of depth. linkedlist[] at a particular depth
-take the first from each linkedlist
+    private static class Node {
 
-*/
-
-class FBNumberOfVisibleNodes {
-
-    private static final class Node {
-        private final int data;
-        private Node left;
-        Node right;
+        private Node left = null;
+        private Node right = null;
+        private int data = 0;
 
         Node() {
             this.data = 0;
-            this.left = null;
-            this.right = null;
         }
 
         Node(int data) {
             this.data = data;
-            this.left = null;
-            this.right = null;
         }
     }
-
-    // Add any helper functions you may need here
-
-    private final Map<Integer, List<Integer>> map = new HashMap<>();
-    private final Set<Integer> depthSet = new HashSet<>();
-
-    private void preOrder(Node n, int depth) {//8,0  //3,1 //1,3  //null,3
-        if (n != null) {
+    
+    Set<Integer> depthSet = new HashSet<>();
+    void preOrder(Node n, int depth) {
+        if (n!=null) {
             depth = visit(n, depth);
-            preOrder(n.left, depth);//3,1    //1,2 //null,3
+            preOrder(n.left, depth);
             preOrder(n.right, depth);
         }
     }
 
-    private int visit(Node n, int depth) {
-        //List<Integer> list = map.get(depth) == null ? new LinkedList<>() : map.get(depth);
-        //list.add(n.data);
-        //map.put(depth, list);
+    int visit(Node node, int depth) {
         depthSet.add(depth);
         return ++depth;
     }
-
-
-    private int visibleNodes(Node root) {
+    private int visibleNodes(SimplerSolution.Node root) {
         // Write your code here
         preOrder(root, 0);
-        //return map.size();
-        return 25;
+        return depthSet.size();
     }
-
 
     // These are the tests we use to determine if the solution is correct.
     // You can add your own at the bottom, but they are otherwise not editable!
@@ -120,6 +65,7 @@ class FBNumberOfVisibleNodes {
     }
 
     public void run() throws IOException {
+
 
         Node root_1 = new Node(8);
         root_1.left = new Node(3);
@@ -152,6 +98,6 @@ class FBNumberOfVisibleNodes {
     }
 
     public static void main(String[] args) throws IOException {
-        new FBNumberOfVisibleNodes().run();
+        new SimplerSolution().run();
     }
 }

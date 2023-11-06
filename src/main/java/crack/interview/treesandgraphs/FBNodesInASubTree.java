@@ -94,7 +94,7 @@ class FBNodesInASubTree {
     private void visit(Node node, Query query, char[] string) {
         if (node.val == query.u) { //1 == 1
             count = true;
-        }
+        } //wait for count to be true to start counting result
         if (count == true && string[node.val - 1] == query.c) { // a == a
             result++;
         }
@@ -109,7 +109,7 @@ class FBNodesInASubTree {
             }
         }
         for (int i = 0; i < queries.size(); i++) {
-            if (queries.get(i).u < s.toCharArray().length || !s.contains(String.valueOf(queries.get(i).c))) {
+            if (queries.get(i).u < s.toCharArray().length || s.contains(String.valueOf(queries.get(i).c))) {
                 inOrder(root, queries.get(i), s.toCharArray());
                 counter[i] = result;
                 count = false;
