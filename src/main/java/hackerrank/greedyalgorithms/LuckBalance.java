@@ -1,5 +1,6 @@
 package hackerrank.greedyalgorithms;
 
+
 import java.io.*;
 import java.util.*;
 import java.util.stream.*;
@@ -7,7 +8,7 @@ import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 import java.util.concurrent.atomic.*;
 
-class Result {
+class LuckBalance {
 
     /*
      * Complete the 'luckBalance' function below.
@@ -17,7 +18,6 @@ class Result {
      *  1. INTEGER k
      *  2. 2D_INTEGER_ARRAY contests
      */
-
     public static int luckBalance(int k, List<List<Integer>> contests) {
         // Write your code here
         // she want to lose all 0 challenges to increase her luck balance
@@ -45,58 +45,69 @@ class Result {
         //4 0 to k
         //add twice the value
 
+        /*
+        final solution
+        4 total 0s and make a list of ones
+
+        reverse order them
+
+        if there are 1s and if k is not 0 ??
+        4 add 1s to k
+        4 minus 1s to end of list
+
+         */
+        if(contests.size()==0)
+            return 0;
 
         AtomicInteger result = new AtomicInteger();
         List<Integer> importantOnes = new ArrayList<>(contests.size());
 
-        contests.stream().forEach(contest -> {
+        contests.forEach(contest -> {
             if(contest.get(1) == 0)
                 result.addAndGet(contest.get(0));
             else {
                 importantOnes.add(contest.get(0));
-                result.addAndGet(-contest.get(0));
+                //result.addAndGet(-contest.get(0));
             }
         });
+        if(k > importantOnes.size())
+            k = importantOnes.size();
+        if(importantOnes.size()!=0 || k == 0) {  // don't think k == 0 is necessary here.
+            Collections.sort(importantOnes, Collections.reverseOrder());
 
-
-        Collections.sort(importantOnes);
-        System.out.println(importantOnes);
-        IntStream.range(importantOnes.size()-k, importantOnes.size()).forEach(index -> {
-            result.addAndGet(2*importantOnes.get(index));
-        });
+            IntStream.range(0, k).forEach(index -> {
+                result.addAndGet(importantOnes.get(index));
+            });
+            IntStream.range(k, importantOnes.size()).forEach(index -> {
+                result.addAndGet(-importantOnes.get(index));
+            });
+        }
         return result.intValue();
     }
 
         public static void main(String[] args) throws IOException {
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
-
-            String[] firstMultipleInput = bufferedReader.readLine().replaceAll("\\s+$", "").split(" ");
-
-            int n = Integer.parseInt(firstMultipleInput[0]);
-
-            int k = Integer.parseInt(firstMultipleInput[1]);
 
             List<List<Integer>> contests = new ArrayList<>();
+            contests.add(Stream.of(5, 0).collect(toList()));
+            contests.add(Stream.of(2, 0).collect(Collectors.toList()));
+            contests.add(Stream.of(1, 0).collect(Collectors.toCollection(ArrayList::new)));
+            contests.add(Stream.of(8, 0).collect(toList()));
+            contests.add(Stream.of(10, 0).collect(toList()));
+            contests.add(Stream.of(5, 0).collect(toList()));
 
-            IntStream.range(0, n).forEach(i -> {
-                try {
-                    contests.add(
-                            Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
-                                  .map(Integer::parseInt)
-                                  .collect(toList())
-                    );
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-            });
+            System.out.println(LuckBalance.luckBalance(6, contests)==31);
+            System.out.println(LuckBalance.luckBalance(3, contests)==31);
+            System.out.println(LuckBalance.luckBalance(0, contests)==31);
 
-            int result = Result.luckBalance(k, contests);
+            contests = new ArrayList<>();
+            contests.add(Stream.of(5, 1).collect(toList()));
+            contests.add(Stream.of(2, 1).collect(Collectors.toList()));
+            contests.add(Stream.of(1, 1).collect(Collectors.toCollection(ArrayList::new)));
+            contests.add(Stream.of(8, 1).collect(toList()));
+            contests.add(Stream.of(10, 0).collect(toList()));
+            contests.add(Stream.of(5, 0).collect(toList()));
 
-            bufferedWriter.write(String.valueOf(result));
-            bufferedWriter.newLine();
-
-            bufferedReader.close();
-            bufferedWriter.close();
+            System.out.println(LuckBalance.luckBalance(3, contests)==29);
+            System.out.println(LuckBalance.luckBalance(0, contests)==-1);
         }
     }
